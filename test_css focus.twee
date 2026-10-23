@@ -1,0 +1,161 @@
+:: StoryTitle
+test
+
+
+:: StoryData
+{
+  "ifid": "F2AB26D6-F4C5-4594-827E-33C17F4CB3DE",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "prologue",
+  "tag-colors": {
+    "prologue": "green",
+    "dehors": "purple",
+    "i'm-going": "green",
+    "text": "green"
+  },
+  "zoom": 1
+}
+
+
+:: Passage sans titre 1 {"position":"675,650","size":"100,100"}
+<html>
+
+<head>
+    <title>Go to reapair shop</title>
+    <link rel="stylesheet" href="style_main.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="title_passage">
+            <h1>Go to repair shop</h1>
+        </div>
+    </div>
+    <div class="comptoir">
+        <button>
+        </button>
+
+    </div>
+</body>
+
+</html>
+
+
+:: YOU FALL {"position":"950,925","size":"100,100"}
+
+
+
+:: Yeah why not\  {"position":"1000,800","size":"100,100"}
+<html>
+<body> 
+<h1>MY EYES</h1>
+<p> it's totaly for is bank, you  </p>
+</body>
+
+</html> 
+[[YOU FALL]]
+
+
+:: don't even bother to open it\  {"position":"775,850","size":"100,100"}
+<html>
+<body> 
+<h1>nah</h1>
+<p>nah, you don't want to do it so you look at his computer ...    </p>
+</body>
+
+</html> 
+[[YOU FALL]]
+
+
+:: i'm going [i'm-going] {"position":"850,350","size":"100,100"}
+<html>
+<body> 
+<h1>Just arrived</h1>
+<p>you arrived safe at you're uncle house, you've nothing special to do, just stay in the house wait, wandering in the house, all the room are open but not his bedroom, you guess he doesn't want you to see it, while you're looking at your phone your receving a message of your uncle  </p>
+</body>
+
+</html> 
+[[text]]
+
+
+:: passage2 {"position":"700,450","size":"100,100"}
+<html id="a"> 
+<body>
+<p class="consequence"> <strong>You didn't help your uncle but your phone falls and breaks</strong></p>
+<p class="donc"> You are required to go to the store to buy a new phone. 
+You go outside. </p>
+</body>
+</html>
+[[passage3]]
+
+
+:: passage3 [dehors] {"position":"900,650","size":"100,100"}
+<html>
+    <meta charset="utf-8">
+    <head>
+        <h1>You end up going outside</h1>
+    </head>
+    <body>
+        <div id="main_text">On the way there your uncle calls you and asks if you're really going there.</div>
+        <button id="zgeg"> You dont have much of a choice now do you?</button>
+        
+    </body>
+</html>
+[[Passage sans titre 1]]
+
+
+:: prologue [prologue] {"position":"850,200","size":"100,100"}
+<div class="All">
+<h1>Prologue</h1>
+
+<p class="terminal-line story-text">it's summer, you're a teenager, and you want some money for your vacation, so you contact all your close familly, asking if they've a job for you, your uncle respond back saying is going on a week-end vacation in thailand, so he ask you to keep his house for the week end for 25$ per day </p>
+</div>
+
+[[i'm going]]
+
+
+:: text [text] {"position":"850,500","size":"100,100"}
+<html>
+<body> 
+<h1>looking trough the mail</h1>
+<p> you're uncle ask you to golook at his computer because he don't want to start, he ask you if you can repair it,  </p>
+</body>
+
+</html>
+[[passage2]]
+
+
+:: StoryStylesheet [stylesheet]
+tw-story[tags~="text"] {
+  background-image: url(https://www.maison-travaux.fr/wp-content/uploads/sites/8/2025/10/ecran-telephone-casse-danger.jpg);
+}
+
+tw-story[tags~="prologue"]{
+  /*background-color : red;*/
+  background-image: url(https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg);
+  background-size: cover;
+}
+
+tw-story[tags~="i'm-going"] {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvru__phgxcb9oO-MKTBwgdplVWXCPSo19M6xprM6iowjduKT3bzWm_sO&s=10);
+  background-size: cover;
+  border: none;
+}
+
+/* PASSAGE */
+tw-passage[tags~="prologue"]{
+  background-color : #DDD3E8;
+  opacity : 90%;
+  outline : 4px ridge #3A0F34;
+  border-radius : 2em;
+  box-shadow : 2px 2px 2px 2px #EAAA00;
+}
+
+tw-passage[tags~="prologue"] h1{
+  color : black;
+}
+
+tw-passage[tags~="prologue"] p{
+  color : black;
+}
