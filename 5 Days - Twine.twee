@@ -1,0 +1,620 @@
+:: StoryTitle
+5 Days - Twine
+
+
+:: StoryData
+{
+  "ifid": "d57e8381-46f0-4c56-9b1e-4c0576c9a201",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "01_Courriel",
+  "zoom": 1
+}
+
+
+:: 01_Courriel {"position":"25,25","size":"100,100"}
+
+<div class="screen-frame">
+  <div class="screen-bar"><span>ORDI-01</span>MESSAGERIE LOCALE<span>19:42</span></div>
+  <pre class="ascii-scene">                   
+      | |   INBOX       [ 1 NEW ]    
+      | |                           
+      | |   FROM : Oncle
+      | |   SUBJECT : Un service 
+      | |   STATUS : NON LU 
+  </pre>
+  <p class="terminal-line story-text">Une nouvelle notification clignote en bas de l'écran.</p>
+  <p class="terminal-dim">Expéditeur : ton oncle — reçu à 19:41</p>
+
+  <<linkreplace "[ OUVRIR LE MAIL ]">>
+    <<run setup.playSfx("click")>>
+    <div class="mail-reveal">
+      <div class="mail-heading">MESSAGE OUVERT / 19:42</div>
+      <pre class="ascii-mail">
++------------------------------------------------+
+| De : Oncle                                     |
+| Objet : La maison                              |
++------------------------------------------------+
+| Salut,                                         |
+|                                                |
+| Peux-tu garder la propriété pendant cinq jours ?|
+| La maison sera à toi le temps de mon absence.  |
+| Je t'enverrai les détails si besoin.           |
+|                                                |
+| Merci,                                         |
+| Ton oncle                                      |
++------------------------------------------------+
+      </pre>
+      <<link "[ PASSER À LA MAISON ]" "02_Maison">><<run setup.playSfx("click")>><<set $mailOpened = true>><</link>>
+    </div>
+  <</linkreplace>>
+</div>
+<!-- BLOC 1/4 : le mail de l'oncle et l'ouverture du message. -->
+<<if !$initialized>>
+  <<set $initialized = true>>
+  <<set $mailOpened = false>>
+  <<set $phoneBroken = false>>
+  <<set $phoneRepaired = false>>
+  <<set $needStrip = false>>
+  <<set $hasBought = false>>
+  <<set $purchase = "aucun achat">>
+  <<set $firstLookedBack = false>>
+  <<set $lookedAtSecond = false>>
+  <<set $lookedAtThird = false>>
+  <<set $routeStage = 0>>
+<</if>>
+
+
+
+:: 02_Maison {"position":"150,25","size":"100,100"}
+<!-- BLOC 2/4 : la notification sur l'ordinateur ou le téléphone qui tombe. -->
+<div class="screen-frame">
+  <div class="screen-bar"><span>MAISON</span><span>BUREAU</span><span>SOIR</span></div>
+  <pre class="ascii-scene">
+  +--------------------------------------+
+  |              BUREAU                 			
+  |                                      
+  |      .----------------------.    
+  |      |  PC : * notification   |      
+
+ 
+  </pre>
+  <p class="story-text">Tu es assis devant l'ordinateur. Une notification vient d'apparaître.</p>
+  <div class="choice-panel">
+    <p class="choice-title">QUE FAIS-TU ?</p>
+    <<link "[ CONSULTER LA NOTIFICATION ]" "03_Magasin">>
+      <<run setup.playSfx("click")>>
+      <<set $needStrip = true>>
+      <<set $phoneBroken = false>>
+    <</link>>
+    <<link "[ IGNORER ET SE LEVER ]" "03_Magasin">>
+      <<run setup.playSfx("steps")>>
+      <<set $needStrip = false>>
+      <<set $phoneBroken = true>>
+    <</link>>
+  </div>
+  <p class="terminal-dim story-text">Le choix est immédiat. Tu quittes la maison pour le magasin informatique.</p>
+</div>
+
+
+:: 03_Magasin {"position":"275,25","size":"100,100"}
+<!-- BLOC 3/4 : un achat maximum ; si le téléphone est cassé, sa réparation est obligatoire. -->
+<div class="screen-frame">
+  <div class="screen-bar"><span>DEPANNAGE 38</span><span>ATELIER INFORMATIQUE</span><span>OUVERT</span></div>
+  <pre class="ascii-scene">
+       
+      |  DEPANNAGE 38                 
+      |  CABLES / PERIPHERIQUES      
+      |
+      |          COMPTOIR             
+      
+  </pre>
+  <p class="story-text">Le magasin sent la poussière chaude et le plastique neuf. Tu arrives au comptoir.</p>
+
+  <div class="shop-panel">
+    <p class="choice-title">ACHAT — UN SEUL ARTICLE</p>
+    <<if !$hasBought>>
+      <p class="shop-item">01 / Multiprise — 12 EUR</p>
+      <<link "Acheter la multiprise" "03_Magasin">><<set $hasBought = true>><<set $purchase = "une multiprise">><</link>>
+      <p class="shop-item">02 / Cle USB — 8 EUR</p>
+      <<link "Acheter la cle USB" "03_Magasin">><<set $hasBought = true>><<set $purchase = "une cle USB">><</link>>
+      <p class="shop-item">03 / Cable HDMI — 10 EUR</p>
+      <<link "Acheter le cable HDMI" "03_Magasin">><<set $hasBought = true>><<set $purchase = "un cable HDMI">><</link>>
+      <p class="shop-item">04 / Cable reseau — 6 EUR</p>
+      <<link "Acheter le cable reseau" "03_Magasin">><<set $hasBought = true>><<set $purchase = "un cable reseau">><</link>>
+    <<else>>
+      <p class="terminal-line">ARTICLE ACHETE : <<print $purchase>></p>
+      <p class="terminal-dim">Le comptoir ne permet qu'un seul achat par visite.</p>
+    <</if>>
+  </div>
+
+  <div class="shop-panel">
+    <p class="choice-title">ETAT DU TELEPHONE</p>
+    <<if $phoneBroken>>
+      <<if $phoneRepaired>>
+        <p class="terminal-line">Téléphone réparé. Il s'allume de nouveau.</p>
+      <<else>>
+        <p class="warning-line">ÉCRAN FISSURÉ — réparation obligatoire avant de partir.</p>
+        <<link "Faire réparer le téléphone — 25 EUR" "03_Magasin">><<set $phoneRepaired = true>><</link>>
+      <</if>>
+    <<else>>
+      <p class="terminal-line">Téléphone intact. Aucun dépannage nécessaire.</p>
+    <</if>>
+  </div>
+
+  <div class="choice-panel">
+    <<if $hasBought && (!$phoneBroken || $phoneRepaired)>>
+      <<link "[ QUITTER LE MAGASIN ]" "04_Retour">>
+        <<run setup.playSfx("door")>>
+        <<set $routeStage = 1>>
+        <<set $firstLookedBack = false>>
+        <<set $lookedAtSecond = false>>
+        <<set $lookedAtThird = false>>
+      <</link>>
+    <<else>>
+      <p class="terminal-dim">Pour partir, achète un article. Si ton téléphone est cassé, fais-le réparer aussi.</p>
+    <</if>>
+  </div>
+</div>
+
+
+:: 04_Retour {"position":"400,25","size":"100,100"}
+<!-- BLOC 4/4 : trois arrêts sur le chemin, puis le retour sain et sauf ou l'enlèvement. -->
+<div class="screen-frame">
+  <div class="screen-bar"><span>CHEMIN DU RETOUR</span><span>CAMERA SUBJECTIVE</span><span>20:16</span></div>
+  <pre class="ascii-scene road-scene">
+              .             .
+        .          |             .
+                   |
+            _______|_______
+           /               \
+  ________/_________________\________
+             .        .
+        .                 .
+  </pre>
+  <p class="story-text">Tu sors du magasin. Tes pas frottent le gravier. La porte se referme derrière toi.</p>
+
+  <<if $routeStage is 1>>
+    <p class="terminal-dim story-text">[ PAS... PAS... ] Tu t'arrêtes. Le bruit de la rue semble s'éteindre.</p>
+    <div class="choice-panel">
+      <p class="choice-title">PREMIER ARRÊT</p>
+      <<link "Continuer à avancer" "04_Retour">><<run setup.playSfx("steps")>><<set $firstLookedBack = false>><<set $routeStage = 2>><</link>>
+      <<link "Se retourner" "04_Retour">><<run setup.playSfx("turn")>><<set $firstLookedBack = true>><<set $routeStage = 2>><</link>>
+    </div>
+  <<elseif $routeStage is 2>>
+    <<if $firstLookedBack>>
+      <p class="story-text">Tu regardes derrière toi. La route paraît vide. Tu ne vois que les lampadaires et le trottoir.</p>
+    <<else>>
+      <p class="story-text">Tu ne regardes pas derrière toi. La caméra reste dans ton dos tandis que tu reprends ta marche.</p>
+    <</if>>
+    <p class="terminal-dim story-text">[ PAS... PAS... ] Quelques secondes plus tard, tu t'arrêtes une seconde fois.</p>
+    <div class="choice-panel">
+      <p class="choice-title">DEUXIÈME ARRÊT</p>
+      <<link "Continuer à avancer" "04_Retour">><<run setup.playSfx("steps")>><<set $lookedAtSecond = false>><<set $routeStage = 3>><</link>>
+      <<link "Se retourner" "04_Retour">><<run setup.playSfx("turn")>><<set $lookedAtSecond = true>><<set $routeStage = 3>><</link>>
+    </div>
+  <<elseif $routeStage is 3>>
+    <<if $lookedAtSecond>>
+      <p class="warning-line story-text">Derrière toi, une silhouette marche à la même vitesse. Elle semble te suivre.</p>
+      <pre class="ascii-scene silhouette-scene">
+                o
+               /|\
+               / \\
+      ------------------------------
+             TOI          ???
+      </pre>
+    <<else>>
+      <p class="story-text">Tu ne regardes pas en arrière. Les pas continuent, parfois très proches, parfois étouffés.</p>
+    <</if>>
+    <p class="terminal-dim story-text">Tu avances encore. Troisième arrêt. Tu sens que quelque chose ne va pas.</p>
+    <div class="choice-panel">
+      <p class="choice-title">TROISIÈME ARRÊT</p>
+      <<link "Continuer sans regarder" "04_Retour">><<run setup.playSfx("steps")>><<set $lookedAtThird = false>><<set $routeStage = 4>><</link>>
+      <<link "Se retourner" "04_Retour">><<run setup.playSfx("turn")>><<set $lookedAtThird = true>><<set $routeStage = 4>><</link>>
+    </div>
+  <<elseif $routeStage is 4>>
+    <<if $lookedAtThird>>
+      <p class="story-text">Tu te retournes. La silhouette est toujours là, mais nettement plus loin, immobile au bord de la route.</p>
+      <pre class="ascii-scene silhouette-scene">
+                                     o
+                                    /|\
+                                    / \\
+      --------------------------------------
+      </pre>
+    <<else>>
+      <p class="story-text">Tu fixes la route devant toi. Derrière, un bruit de pas s'arrête. Tu refuses de regarder.</p>
+    <</if>>
+    <div class="choice-panel">
+      <<link "[ REPRENDRE LA ROUTE ]" "04_Retour">><<run setup.playSfx("steps")>><<set $routeStage = 5>><</link>>
+    </div>
+  <<elseif $routeStage is 5>>
+    <<if $lookedAtSecond>>
+      <!-- Issue positive : le joueur a vu la silhouette au deuxième arrêt. -->
+      <p class="terminal-line story-text">La porte de la propriété apparaît enfin. Tu rentres et verrouilles derrière toi.</p>
+      <pre class="ascii-scene house-scene">
+      +--------------------------------+
+      |            MAISON              |
+      |  [ porte verrouillée ]         |
+      |                                |
+      |   PC : allumé                  |
+      |   TELEPHONE : <<if $phoneBroken>>REPARÉ<<else>>OK<</if>>             |
+      |   ACHAT : <<print $purchase>>   |
+      +--------------------------------+
+      </pre>
+      <p class="story-text">Tu es à l'intérieur, sain et sauf. Dans le calme, tu entends pourtant un dernier pas dehors.</p>
+      <p class="terminal-dim">FIN DU BLOC 4 — FIN PROVISOIRE</p>
+    <<else>>
+      <!-- Issue négative : pas de regard en arrière au deuxième arrêt. -->
+      <p class="warning-line story-text">Une main te saisit par derrière. Tu n'as pas le temps de crier.</p>
+      <pre class="ascii-scene abduction-scene">
+       __________________________
+      /  ______________________  \
+     |  |                      |  |
+     |  |  PORTE COULISSANTE   |  |
+     |  |______________________|  |
+     |____________________________|
+             [ NOIR ]
+      </pre>
+      <p class="story-text">Un claquement sourd. Le moteur démarre. La route disparaît derrière les vitres teintées.</p>
+      <p class="warning-line">TU AS ÉTÉ ENLEVÉ.</p>
+      <p class="terminal-dim">FIN DU BLOC 4 — FIN PROVISOIRE</p>
+    <</if>>
+    <<link "[ RECOMMENCER L'HISTOIRE ]" "01_Courriel">><<set $initialized = false>><</link>>
+  <<else>>
+    <!-- Sécurité : protège contre une entrée accidentelle dans le passage sans le magasin. -->
+    <p class="story-text">Tu es sur le chemin du retour, mais tu ne sais plus comment tu es arrivé ici.</p>
+    <<link "Revenir au magasin" "03_Magasin">><</link>>
+  <</if>>
+</div>
+
+
+:: StoryScript [script]
+/*
+  Bruitages synthétiques : aucun fichier audio externe n'est requis.
+  Les sons sont déclenchés par des clics de l'utilisateur, ce qui évite
+  les restrictions habituelles de lecture automatique des navigateurs.
+*/
+setup.playSfx = function (kind) {
+  try {
+    var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    setup._audioContext = setup._audioContext || new AudioContextClass();
+    var ctx = setup._audioContext;
+    if (ctx.state === "suspended") ctx.resume();
+    var start = ctx.currentTime;
+
+    /* Chaque tonalité possède une enveloppe courte pour éviter les clics audio. */
+    function tone(freq, offset, duration, wave, volume, endFreq) {
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = wave || "triangle";
+      osc.frequency.setValueAtTime(freq, start + offset);
+      if (endFreq) osc.frequency.exponentialRampToValueAtTime(endFreq, start + offset + duration);
+      gain.gain.setValueAtTime(0.0001, start + offset);
+      gain.gain.exponentialRampToValueAtTime(volume || 0.035, start + offset + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + offset + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(start + offset);
+      osc.stop(start + offset + duration + 0.01);
+    }
+
+    /* Clic de souris / déclencheur photographique. */
+    if (kind === "click") {
+      tone(1500, 0, 0.025, "square", 0.018);
+      tone(820, 0.028, 0.035, "square", 0.014);
+    }
+    /* Deux pas sourds, espacés comme sur un trottoir. */
+    else if (kind === "steps") {
+      tone(105, 0, 0.075, "triangle", 0.07, 58);
+      tone(88, 0.18, 0.08, "triangle", 0.06, 48);
+    }
+    /* Porte métallique du magasin. */
+    else if (kind === "door") {
+      tone(220, 0, 0.16, "sawtooth", 0.025, 95);
+      tone(720, 0.16, 0.035, "square", 0.012);
+    }
+    /* Petit frottement tonal stylisé pour le geste de se retourner. */
+    else if (kind === "turn") {
+      tone(320, 0, 0.09, "triangle", 0.025, 210);
+    }
+  } catch (error) {
+    /* Le récit continue sans son si le navigateur bloque Web Audio. */
+  }
+};
+
+/*
+  Animation d'écriture : seuls les paragraphes narratifs portant .story-text
+  sont animés. Les choix, les boutons, l'ASCII et les informations de magasin
+  restent immédiatement lisibles et interactifs.
+*/
+setup._typingQueue = [];
+setup._typingGeneration = 0;
+setup._typingRunning = false;
+
+/* Ajoute les paragraphes narratifs trouvés dans un élément nouvellement affiché. */
+setup.collectTypewriterText = function (root) {
+  if (!root) return;
+  var found = [];
+  if (root.nodeType === 1 && root.matches && root.matches('.story-text')) {
+    found.push(root);
+  }
+  if (root.querySelectorAll) {
+    found = found.concat(Array.prototype.slice.call(root.querySelectorAll('.story-text')));
+  }
+
+  found.forEach(function (element) {
+    if (element.dataset.typewriterQueued === 'true') return;
+    element.dataset.typewriterQueued = 'true';
+    setup._typingQueue.push({
+      element: element,
+      text: element.textContent || '',
+      generation: setup._typingGeneration
+    });
+  });
+  setup.runTypewriterQueue();
+};
+
+/* Écrit les lignes l'une après l'autre afin de garder un rythme de lecture naturel. */
+setup.runTypewriterQueue = function () {
+  if (setup._typingRunning || setup._typingQueue.length === 0) return;
+  setup._typingRunning = true;
+  var item = setup._typingQueue.shift();
+  var generation = setup._typingGeneration;
+  var element = item.element;
+  var text = item.text;
+  var index = 0;
+
+  if (item.generation !== generation || !element.isConnected) {
+    setup._typingRunning = false;
+    setup.runTypewriterQueue();
+    return;
+  }
+
+  element.textContent = '';
+  function writeNextCharacter() {
+    if (generation !== setup._typingGeneration) return;
+    if (!element.isConnected) {
+      setup._typingRunning = false;
+      setup.runTypewriterQueue();
+      return;
+    }
+    if (index >= text.length) {
+      element.dataset.typewriterComplete = 'true';
+      window.setTimeout(function () {
+        if (generation !== setup._typingGeneration) return;
+        setup._typingRunning = false;
+        setup.runTypewriterQueue();
+      }, 70);
+      return;
+    }
+    element.textContent += text.charAt(index);
+    index += 1;
+    window.setTimeout(writeNextCharacter, 18);
+  }
+  writeNextCharacter();
+};
+
+/* À chaque passage, annule la file précédente et anime la narration visible. */
+$(document).on(':passagedisplay', function () {
+  setup._typingGeneration += 1;
+  setup._typingQueue = [];
+  setup._typingRunning = false;
+  setup.collectTypewriterText(document.getElementById('passages'));
+});
+
+/* Le mail s'ouvre dans le même passage : l'observateur détecte ce texte ajouté après le clic. */
+$(document).on(':storyready', function () {
+  var passages = document.getElementById('passages');
+  if (!passages || !window.MutationObserver || setup._typingObserver) return;
+  setup._typingObserver = new MutationObserver(function (records) {
+    records.forEach(function (record) {
+      Array.prototype.forEach.call(record.addedNodes, function (node) {
+        setup.collectTypewriterText(node);
+      });
+    });
+  });
+  setup._typingObserver.observe(passages, { childList: true, subtree: true });
+});
+
+:: StoryStylesheet [stylesheet]
+/*
+  FEUILLE DE STYLE
+*/
+
+:root {
+  --bg: #151714;
+  --panel: #1c1f1a;
+  --screen: #111410;
+  --line: #44493f;
+  --paper: #d8d5ca;
+  --muted: #96998e;
+  --accent: #b7c4a0;
+  --warning: #c27d71;
+}
+
+/* Fond et texte : tons mats, sans dégradés */
+html,
+body {
+  background: var(--bg);
+  color: var(--paper);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+}
+
+/* La barre latérale par défaut est masquée */
+#ui-bar,
+#ui-bar-toggle {
+  display: none;
+}
+
+#story {
+  margin-left: 0;
+  padding: 0;
+}
+
+#passages {
+  width: 100%;
+  max-width: 760px;
+  margin: 28px auto;
+}
+
+/* Un panneau simple, re-utilisé à chaque passage */
+.passage {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(14px, 3vw, 28px);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+.screen-frame {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Informations d'environnement : même présentation sur les quatre blocs. */
+.screen-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 14px;
+  margin: 0 0 18px;
+  padding: 0 0 9px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+/* Section ASCII */
+.ascii-scene,
+.ascii-mail {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  background: var(--screen);
+  color: var(--accent);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(9px, 2.2vw, 13px);
+  line-height: 1.3;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.ascii-mail {
+  color: var(--paper);
+}
+
+/* L'effet d'écriture */
+.story-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.terminal-line {
+  color: var(--accent);
+}
+
+.terminal-dim {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.warning-line {
+  color: var(--warning);
+  font-weight: bold;
+}
+
+.mail-heading,
+.choice-title {
+  margin: 16px 0 8px;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+/* Séparations */
+.choice-panel,
+.shop-panel {
+  margin-top: 18px;
+  padding: 10px 0 2px;
+  border-top: 1px solid var(--line);
+}
+
+.shop-item {
+  margin: 8px 0 3px;
+  color: var(--muted);
+}
+
+/* style des liens */
+#passages a,
+#passages .link-internal,
+#passages .link-external {
+  display: inline-block;
+  margin: 5px 16px 5px 0;
+  padding: 2px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+#passages a:hover,
+#passages .link-internal:hover,
+#passages .link-external:hover {
+  color: var(--paper);
+  background: transparent;
+}
+
+#passages a:focus-visible,
+#passages .link-internal:focus-visible,
+#passages .link-external:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Mise en page pour mobile sans modifier la hiérarchie visuelle.
+@media (max-width: 520px) {
+  body {
+    padding: 6px;
+  }
+
+  #passages {
+    margin: 8px auto;
+  }
+
+  .passage {
+    padding: 12px;
+  }
+
+  .screen-bar {
+    font-size: 0.68rem;
+  }
+
+  #passages a,
+  #passages .link-internal,
+  #passages .link-external {
+    display: block;
+    width: fit-content;
+    margin: 9px 0;
+  }
+}*/
