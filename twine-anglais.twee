@@ -12,13 +12,17 @@ test
     "prologue": "green",
     "dehors": "purple",
     "i'm-going": "green",
-    "text": "green"
+    "text": "green",
+    "mail_uncle": "purple",
+    "phone_break": "yellow",
+    "look_pc": "orange",
+    "repair_shop": "green"
   },
   "zoom": 1
 }
 
 
-:: Blank {"position":"1175,325","size":"100,100"}
+:: Blank {"position":"1125,300","size":"100,100"}
 
 
 
@@ -48,7 +52,7 @@ test
 [[YOU FALL]]
 
 
-:: go reapair shop {"position":"675,650","size":"100,100"}
+:: go reapair shop [repair_shop] {"position":"675,650","size":"100,100"}
 <html>
 
 <head>
@@ -70,7 +74,7 @@ test
 </html>
 
 
-:: i'm going [i'm-going] {"position":"875,325","size":"100,100"}
+:: im_going [i'm-going] {"position":"875,325","size":"100,100"}
 <html>
 <body> 
 <h1>Just arrived</h1>
@@ -81,20 +85,21 @@ test
 </body>
 
 </html> 
-[[mail uncle]]
+[[mail_uncle]]
 
 
-:: mail uncle [text] {"position":"900,475","size":"100,100"}
+:: mail_uncle [mail_uncle] {"position":"900,475","size":"100,100"}
 <html>
 <body> 
 <h1>looking trough the mail</h1>
-<p> you're uncle ask you to golook at his computer because he don't want to start, he ask you if you can repair it,  </p>
+<p> you're uncle ask you to golook at his computer because he don't want to start, he ask you if you can repair it,  </p> [[phone break]] [[pc]]
 <audio autoplay>
 <source src="https://mp3tourl.com/audio/1794416120977-c9712876-1466-4d43-9d4c-7f2d8a99b916.mp3"
 </audio>
 </body>
+
 </html>
-[[phone break]] [[pc]]
+
 
 
 :: passage3 [dehors] {"position":"900,625","size":"100,100"}
@@ -114,7 +119,7 @@ test
 [[go reapair shop]]
 
 
-:: pc {"position":"1075,525","size":"100,100"}
+:: pc [look_pc] {"position":"1075,525","size":"100,100"}
 <html>
 <h1> You looking at your uncle's computer</h1>
 <body>
@@ -125,7 +130,7 @@ test
 [[passage3]]
 
 
-:: phone break {"position":"700,500","size":"100,100"}
+:: phone break [phone_break] {"position":"700,500","size":"100,100"}
 <html> 
 <body>
 <p class="consequence"> <strong>You didn't help your uncle but your phone falls and breaks</strong></p>
@@ -151,26 +156,52 @@ type="audio/mp3">
 </body>
 
 </html> 
-[[i'm going]]
+[[im_going]]
 
 
 :: StoryStylesheet [stylesheet]
-tw-story[tags~="mail uncle"] {
-  background-image: url(https://media.istockphoto.com/id/1088347818/fr/photo/email-de-lecture-homme-sur-smartphone.jpg?s=1024x1024&w=is&k=20&c=2w8fJ31ZDI_MyzVOOW37rog7GG9Xb4PC0Evg1m59FBY=);
-  background-size: cover;
+/* PASSAGE PROLOGUE */
+tw-story[tags~="prologue"] {
+    background-image: url("https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg");
+    background-size: cover;
 }
 
-tw-story[tags~="prologue"]{
-  /*background-color : red;*/
-  background-image: url(https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg);
-  background-size: cover;
+/* PASSAGE IM_GOING */
+tw-story[tags~="i'm-going"] {
+    background-image: url(https://wallpapers.com/images/hd/nice-house-pictures-22z0s105jhsgqp7m.jpg);
+}
+
+/* PASSAGE MAIL UNCLE */
+tw-story[tags~="mail_uncle"] {
+    background-image: url("https://media.istockphoto.com/id/1088347818/fr/photo/email-de-lecture-homme-sur-smartphone.jpg?s=1024x1024&w=is&k=20&c=2w8fJ31ZDI_MyzVOOW37rog7GG9Xb4PC0Evg1m59FBY=");
+    background-size: cover;
+}
+
+/* Passage phone break */
+tw-story[tags~="phone_break"] {
+	background-image: url(https://www.buzzwebzine.fr/wp-content/uploads/2016/06/smartphone-ecran-casse.jpg);
+  	background-size : cover;
+}
+
+tw-passage[tags~="phone_break"] {
+	color : black;
 }
 
 
-/* PASSAGE */
-tw-story tags="i'm going" {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvru__phgxcb9oO-MKTBwgdplVWXCPSo19M6xprM6iowjduKT3bzWm_sO&s=10);
-  background-size: cover;
+/* Passage look pc */
+tw-story[tags~="look_pc"]{
+	background-image: url(https://iconeyecare.com/wp-content/uploads/sites/2/2018/12/workplace-vision-problems-scaled.jpg);
+    background-size : cover;
+
 }
 
+/* Passage 3 */
+tw-story[tags~="dehors"]{
+	background-image : url(https://thumbs.dreamstime.com/b/boulevard-avenue-tree-lined-pedestrian-path-la-plata-argentina-peaceful-urban-green-space-walking-resting-413470606.jpg);
+    background-size : cover;
+}
+/*Passage reapair shop*/
+tw-story[tags~="repair_shop"]{
+	background-image: url("https://www.gsm-express.fr/wp-content/uploads/2025/03/magasin-reparation-telephone-lille.jpg");
+    background-size : cover;
 }
