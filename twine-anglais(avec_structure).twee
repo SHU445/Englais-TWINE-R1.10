@@ -1,0 +1,326 @@
+:: StoryTitle
+test
+
+
+:: StoryData
+{
+  "ifid": "F2AB26D6-F4C5-4594-827E-33C17F4CB3DE",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "you don't repaire",
+  "tag-colors": {
+    "prologue": "green",
+    "dehors": "purple",
+    "i'm-going": "green",
+    "text": "green",
+    "mail_uncle": "purple",
+    "phone_break": "yellow",
+    "look_pc": "orange",
+    "repair_shop": "green"
+  },
+  "zoom": 1
+}
+
+
+:: Blank {"position":"1125,300","size":"100,100"}
+
+
+
+:: He jumps on you. {"position":"1300,1125","size":"100,100"}
+//il meurt
+
+[[death]]
+
+
+:: YOU FALL {"position":"1275,925","size":"100,100"}
+
+
+
+:: Yeah why not\  {"position":"1325,775","size":"100,100"}
+<html>
+<body> 
+<h1>MY EYES</h1>
+<p> it's totaly for is bank, you  </p>
+</body>
+
+</html> 
+[[YOU FALL]]
+
+
+:: You are in the house. {"position":"675,1225","size":"100,100"}
+//ca fatigue l'ado il vas dormir 
+
+[[the day after]]
+
+
+:: You close the back door. {"position":"575,1700","size":"100,100"}
+//il est aller derriere aussi ca te laisse le temps de sois
+prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ouverte sois prendre ton telephone (si il est pas casser) dans le salon proche des escalie
+[[You close the window.]] [[You take a knife.]][[you take your phone]]
+
+
+:: You close the main door. {"position":"1050,1450","size":"100,100"}
+//il a courue derriere donc il est rentrer et ta tue 
+
+[[death]]
+
+
+
+:: You close the window. {"position":"1100,1600","size":"100,100"}
+//le mec passe donc par la porte de devant et entre et te tue 
+[[death]]
+
+
+:: You lower the shutters. {"position":"1075,1250","size":"100,100"}
+// quand il baisse le mec cours sur la vitre la casse et le tue 
+[[death]]
+
+
+:: You take a knife. {"position":"925,1650","size":"100,100"}
+//avec le couteau tu te cache sois dans les toilettes sois dans la salle de bain 
+[[in the restroom]] [[in the bathroom]]
+
+
+:: death {"position":"1475,1800","size":"100,100"}
+
+
+
+:: don't even bother to open it\  {"position":"1475,875","size":"100,100"}
+<html>
+<body> 
+<h1>nah</h1>
+<p>nah, you don't want to do it so you look at his computer ...    </p>
+</body>
+
+</html> 
+[[YOU FALL]]
+
+
+:: go reapair shop [repair_shop] {"position":"875,775","size":"100,100"}
+<html>
+
+<head>
+    <title>Go to reapair shop</title>
+    <link rel="stylesheet" href="style_main.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="title_passage">
+            <h1>Go to repair shop</h1>
+        </div>
+    </div>
+  <audio autoplay>
+  <source src="https://mp3tourl.com/audio/1794416971863-b08aac24-a0b8-49f5-959f-80b0914f6990.mp3">
+  </audio>
+</body>
+
+</html>
+[[you return at home]]
+
+
+
+:: im_going [i'm-going] {"position":"875,325","size":"100,100"}
+<html>
+<body> 
+<h1>Just arrived</h1>
+<p>you arrived safe at you're uncle house.You enter his house. You've nothing special to do, just stay in the house wait, wandering in the house, all the room are open but not his bedroom, you guess he doesn't want you to see it, while you're looking at your phone your receving a message of your uncle  </p>
+<audio autoplay>
+<source src="https://mp3tourl.com/audio/1794415657648-af695273-5faf-4ace-af16-56649e62e57f.mp3">
+</audio>
+</body>
+
+</html> 
+[[mail_uncle]]
+
+
+:: in the bathroom {"position":"1025,1850","size":"100,100"}
+//le mec rentre t'essaye de le planter mais t nul donc tu flop et il te tue 
+[[death]]
+
+
+:: in the bedroom {"position":"450,2200","size":"100,100"}
+// la police arrive pendant qu'il fouille les toilette et les autre piece tu es sauver
+[[win]]
+
+
+:: in the restroom {"position":"875,1950","size":"100,100"}
+il entre et te tue psq il est trop chaud 
+[[death]] 
+
+
+:: mail_uncle [mail_uncle] {"position":"900,475","size":"100,100"}
+<html>
+<body> 
+<h1>looking trough the mail</h1>
+<p> you're uncle ask you to golook at his computer because he don't want to start, he ask you if you can repair it,  </p> [[you don't repair]] [[you repair]]
+<audio autoplay>
+<source src="https://mp3tourl.com/audio/1794416120977-c9712876-1466-4d43-9d4c-7f2d8a99b916.mp3"
+</audio>
+</body>
+
+</html>
+
+
+:: the day after {"position":"675,1350","size":"100,100"}
+//il se dis c  bizarre il se chie dessus
+la j passe 
+le soir :
+il se fait a manger, mange dans le salon 
+il est ko sois il debarrasse sois il laisse la
+
+pendant quee tu regarde un film il voit une silouette 
+sois il baisse les store car il se dit le mec le fixe sois il change de piece car il croit etre parano
+[[You lower the shutters.]] [[you're changing rooms]]
+
+
+
+:: win {"position":"775,2225","size":"100,100"}
+
+
+
+:: you don't repair [phone_break] {"position":"700,500","size":"100,100"}
+<html> 
+<body>
+<p class="consequence"> <strong>You didn't help your uncle but your phone falls and breaks</strong></p>
+<p class="donc"> You have a choice: either you get your phone repaired at the shop, or you leave it broken and stay at home. </p>
+<audio autoplay >
+<source src="https://videotourl.com/audio/1792760287079-2a4a4da7-5d9e-4c69-b8d0-8788fc127f22.mp3"
+type="audio/mp3">
+</audio>
+</body>
+</html>
+[[you stay in the house]]    [[you go out into the street]]
+
+
+:: you don't repaire [prologue] {"position":"850,200","size":"100,100"}
+<html>
+<body> 
+<h1>Prologue</h1>
+<p>it's summer, you're a teenager, and you want some money for your vacation, so you contact all your close familly, asking if they've a job for you, your uncle respond back saying is going on a week-end vacation in thailand, so he ask you to keep his house for the week end for 25$ per day </p>
+<audio autoplay>
+<source src=https://mp3tourl.com/audio/1794416435794-03a4935b-a1a5-4f61-b5a8-181ae1397a92.mp3>
+</audio>
+</body>
+
+</html> 
+[[im_going]]
+
+
+:: you go out into the street [dehors] {"position":"900,625","size":"100,100"}
+<html>
+    <meta charset="utf-8">
+    <head>
+        <h1>You end up going outside</h1>
+    </head>
+    <body>
+        <div id="main_text">On the way there your uncle calls you and asks if you're really going there.</div> 
+        <audio autoplay>
+        	<source src='https://mp3tourl.com/audio/1794416823450-2e030a06-9b89-4d18-8e38-a52ed5bd4f92.mp3'>
+        </audio>
+    </body>
+</html>
+[[go reapair shop]]
+
+
+:: you repair [look_pc] {"position":"1075,525","size":"100,100"}
+<html>
+<h1> You looking at your uncle's computer</h1>
+<body>
+<p>You see that a part of the RAM is broken. you have to go to the store.</p>
+</body>
+
+</html>
+[[you go out into the street]]
+
+
+:: you return at home {"position":"875,900","size":"100,100"}
+//la ou dans la rue il voit un mec qui le suit
+sois il cours par peur soit il se dit c rien 
+
+
+
+[[you run]] [[you walk]]
+
+
+:: you run {"position":"875,1050","size":"100,100"}
+//le mec le poursuit et il se chie dessus 
+
+
+[[You are in the house.]]
+
+
+
+:: you stay in the house {"position":"600,775","size":"100,100"}
+// regarde la tele mais il croit voir quelq'un l'observais
+fait comme si y'avais rien 
+
+[[You are in the house.]] 
+
+
+:: you take your phone {"position":"450,1925","size":"100,100"}
+//t'appelle la police en montant tu te cache sois dans la chambre sois dans la salle de bain 
+[[in the restroom]][[in the bedroom]]
+
+
+:: you walk {"position":"1075,1050","size":"100,100"}
+//le mec arrive en courant et le tue 
+
+[[He jumps on you.]]
+
+
+:: you're changing rooms {"position":"675,1525","size":"100,100"}
+//fatigue de tout se stresse tu reva dormir 
+mais dans la nuit tu entend des bruit 
+//tu descends dans la cuisine 
+tu revois le mec dehors 
+sois tu ferme la porte sois tu ferme la fenetre sois la porte arriere 
+[[You close the back door.]] [[You close the main door.]][[You close the window.]]
+
+
+:: StoryStylesheet [stylesheet]
+/* PASSAGE PROLOGUE */
+tw-story[tags~="prologue"] {
+    background-image: url("https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg");
+    background-size: cover;
+}
+
+/* PASSAGE IM_GOING */
+tw-story[tags~="i'm-going"] {
+    background-image: url(https://wallpapers.com/images/hd/nice-house-pictures-22z0s105jhsgqp7m.jpg);
+}
+
+/* PASSAGE MAIL UNCLE */
+tw-story[tags~="mail_uncle"] {
+    background-image: url("https://media.istockphoto.com/id/1088347818/fr/photo/email-de-lecture-homme-sur-smartphone.jpg?s=1024x1024&w=is&k=20&c=2w8fJ31ZDI_MyzVOOW37rog7GG9Xb4PC0Evg1m59FBY=");
+    background-size: cover;
+}
+
+/* Passage phone break */
+tw-story[tags~="phone_break"] {
+	background-image: url(https://www.buzzwebzine.fr/wp-content/uploads/2016/06/smartphone-ecran-casse.jpg);
+  	background-size : cover;
+}
+
+tw-passage[tags~="phone_break"] {
+	color : black;
+}
+
+
+/* Passage look pc */
+tw-story[tags~="look_pc"]{
+	background-image: url(https://iconeyecare.com/wp-content/uploads/sites/2/2018/12/workplace-vision-problems-scaled.jpg);
+    background-size : cover;
+
+}
+
+/* Passage 3 */
+tw-story[tags~="dehors"]{
+	background-image : url(https://thumbs.dreamstime.com/b/boulevard-avenue-tree-lined-pedestrian-path-la-plata-argentina-peaceful-urban-green-space-walking-resting-413470606.jpg);
+    background-size : cover;
+}
+/*Passage reapair shop*/
+tw-story[tags~="repair_shop"]{
+	background-image: url("https://www.gsm-express.fr/wp-content/uploads/2025/03/magasin-reparation-telephone-lille.jpg");
+    background-size : cover;
+}
