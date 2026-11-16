@@ -70,9 +70,57 @@ prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ou
 [[death]]
 
 
+:: You decide its not that big of a deal [phone_break] {"position":"700,500","size":"100,100"}
+<html> 
+<body>
+<p class="consequence"> <strong>You didn't help your uncle but your phone falls and breaks</strong></p>
+<p class="donc"> You have a choice: either you get your phone repaired at the shop, or you leave it broken and stay at home. </p>
+<audio autoplay >
+<source src="https://videotourl.com/audio/1792760287079-2a4a4da7-5d9e-4c69-b8d0-8788fc127f22.mp3"
+type="audio/mp3">
+</audio>
+</body>
+</html>
+[[you stay in the house]]    [[You go to the repair shop]]
+
+
+:: You go to the repair shop [repair_shop] {"position":"875,775","size":"100,100"}
+<html>
+
+<head>
+    <title>You go to the computer shop</title>
+    <link rel="stylesheet" href="style_main.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="title_passage">
+            <h1>Go to repair shop</h1>
+        </div>
+    </div>
+  <audio autoplay>
+  <source src="https://mp3tourl.com/audio/1794416971863-b08aac24-a0b8-49f5-959f-80b0914f6990.mp3">
+  </audio>
+</body>
+
+</html>
+[[you return at home]]
+
+
 :: You lower the shutters. {"position":"1075,1250","size":"100,100"}
 // quand il baisse le mec cours sur la vitre la casse et le tue 
 [[death]]
+
+
+:: You repair your phone [look_pc] {"position":"1075,525","size":"100,100"}
+<html>
+<h1> You're looking at your uncle's computer</h1>
+<body>
+<p>You see that a part of the RAM is broken and there's nothing to do about it so you have to go to the store.</p>
+</body>
+
+</html>
+[[you go out into the street]]
 
 
 :: You take a knife. {"position":"925,1650","size":"100,100"}
@@ -95,42 +143,19 @@ prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ou
 [[YOU FALL]]
 
 
-:: go reapair shop [repair_shop] {"position":"875,775","size":"100,100"}
-<html>
-
-<head>
-    <title>Go to reapair shop</title>
-    <link rel="stylesheet" href="style_main.css">
-</head>
-
-<body>
-    <div class="content">
-        <div class="title_passage">
-            <h1>Go to repair shop</h1>
-        </div>
-    </div>
-  <audio autoplay>
-  <source src="https://mp3tourl.com/audio/1794416971863-b08aac24-a0b8-49f5-959f-80b0914f6990.mp3">
-  </audio>
-</body>
-
-</html>
-[[you return at home]]
-
-
 :: im_going [i'm-going] {"position":"875,325","size":"100,100"}
 <html>
 <body> 
 <div class="content">
 <h1>Just arrived</h1>
-<p>you arrived safe at you're uncle house.You enter his house. You've nothing special to do, just stay in the house wait, wandering in the house, all the room are open but not his bedroom, you guess he doesn't want you to see it, while you're looking at your phone your receving a message of your uncle  </p>
+<p>you arrived safely at your uncle's house .After entering the house, you realize you've got nothing special to do, except stay in the house and wait, wandering in the house, all the rooms are open apart from his bedroom, you guess he doesn't want you to see it, While you're looking at your phone your receive a message from your uncle . </p>
 [[mail_uncle]]
 </div>
 <audio autoplay>
 <source src="https://mp3tourl.com/audio/1794415657648-af695273-5faf-4ace-af16-56649e62e57f.mp3">
 </audio>
 </body>
-</html> 
+</html>
 
 
 :: in the bathroom {"position":"1025,1850","size":"100,100"}
@@ -151,8 +176,10 @@ il entre et te tue psq il est trop chaud
 :: mail_uncle [mail_uncle] {"position":"900,475","size":"100,100"}
 <html>
 <body> 
-<h1>looking trough the mail</h1>
-<p> you're uncle ask you to golook at his computer because he don't want to start, he ask you if you can repair it,  </p> [[you don't repair]] [[you repair]]
+<h1>Looking trough the mail</h1>
+<p> Since you are studying computer scince, your uncle asks you to go look at his computer because it doesn't start, he ask you if you can repair it,  </p> [[You decide its not that big of a deal]]
+<br>
+[[You repair your phone]]
 <audio autoplay>
 <source src="https://mp3tourl.com/audio/1794416120977-c9712876-1466-4d43-9d4c-7f2d8a99b916.mp3"
 </audio>
@@ -177,25 +204,11 @@ sois il baisse les store car il se dit le mec le fixe sois il change de piece ca
 
 
 
-:: you don't repair [phone_break] {"position":"700,500","size":"100,100"}
-<html> 
-<body>
-<p class="consequence"> <strong>You didn't help your uncle but your phone falls and breaks</strong></p>
-<p class="donc"> You have a choice: either you get your phone repaired at the shop, or you leave it broken and stay at home. </p>
-<audio autoplay >
-<source src="https://videotourl.com/audio/1792760287079-2a4a4da7-5d9e-4c69-b8d0-8788fc127f22.mp3"
-type="audio/mp3">
-</audio>
-</body>
-</html>
-[[you stay in the house]]    [[you go out into the street]]
-
-
 :: you don't repaire [prologue] {"position":"850,200","size":"100,100"}
 <html>
 <body> 
 <h1>Prologue</h1>
-<p>it's summer, you're a teenager, and you want some money for your vacation, so you contact all your close familly, asking if they've a job for you, your uncle respond back saying is going on a week-end vacation in thailand, so he ask you to keep his house for the week end for 25$ per day </p>
+<p>It's summer, you're a teenager, and you want some money to go on a vacation, so you contact all your close familly, asking if they've got a job for you, your uncle responds back saying he's going on a week-end vacation in thailand, so he asks you to houskeep for him this week end for 50€ per day. </p>
 <audio autoplay>
 <source src=https://mp3tourl.com/audio/1794416435794-03a4935b-a1a5-4f61-b5a8-181ae1397a92.mp3>
 </audio>
@@ -212,33 +225,29 @@ type="audio/mp3">
         <h1>You end up going outside</h1>
     </head>
     <body>
-        <div id="main_text">On the way there your uncle calls you and asks if you're really going there.</div> 
+        <div id="main_text">On the way there your uncle calls you and asks you "what's up brah what are you doing? not too boring?" You tell him you're quickly going to the computer store in hope of finding RAM in these difficult times.</div> 
         <audio autoplay>
         	<source src='https://mp3tourl.com/audio/1794416823450-2e030a06-9b89-4d18-8e38-a52ed5bd4f92.mp3'>
         </audio>
     </body>
 </html>
-[[go reapair shop]]
-
-
-:: you repair [look_pc] {"position":"1075,525","size":"100,100"}
-<html>
-<h1> You looking at your uncle's computer</h1>
-<body>
-<p>You see that a part of the RAM is broken. you have to go to the store.</p>
-</body>
-
-</html>
-[[you go out into the street]]
+[[You go to the repair shop]]
 
 
 :: you return at home {"position":"875,900","size":"100,100"}
-//la ou dans la rue il voit un mec qui le suit
-sois il cours par peur soit il se dit c rien 
+<html>
+<head>
+<title> The way back home </title>
+ <link rel="stylesheet" href="style_main.css">
+</head>
 
-
-
-[[you run]] [[you walk]]
+<body>
+ <div id="main_text">You take your time enjoying the outside's calm chaos and suddenly get shivers in your back: you feel like you're being followed.<br>
+You slowly turn your head to verify what you felt and cross his eyes; you are definitely followed.
+</div>
+</body>
+</html>
+[[you run]]<br> [[you walk]]
 
 
 :: you run {"position":"875,1050","size":"100,100"}
@@ -272,11 +281,10 @@ mais dans la nuit tu entend des bruit
 //tu descends dans la cuisine 
 tu revois le mec dehors 
 sois tu ferme la porte sois tu ferme la fenetre sois la porte arriere 
-[[You close the back door.]] [[You close the main door.]][[You close the window.]]
+[[You close the back door.]]<br> [[You close the main door.]]<br>[[You close the window.]]
 
 
 :: StoryStylesheet [stylesheet]
-
 /* PASSAGE PROLOGUE */
 tw-story[tags~="prologue"] {
     background-image: url("https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg");
