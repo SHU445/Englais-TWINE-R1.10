@@ -65,7 +65,6 @@ prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ou
 [[death]]
 
 
-
 :: You close the window. {"position":"1100,1600","size":"100,100"}
 //le mec passe donc par la porte de devant et entre et te tue 
 [[death]]
@@ -119,19 +118,19 @@ prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ou
 [[you return at home]]
 
 
-
 :: im_going [i'm-going] {"position":"875,325","size":"100,100"}
 <html>
 <body> 
+<div class="content">
 <h1>Just arrived</h1>
 <p>you arrived safe at you're uncle house.You enter his house. You've nothing special to do, just stay in the house wait, wandering in the house, all the room are open but not his bedroom, you guess he doesn't want you to see it, while you're looking at your phone your receving a message of your uncle  </p>
+[[mail_uncle]]
+</div>
 <audio autoplay>
 <source src="https://mp3tourl.com/audio/1794415657648-af695273-5faf-4ace-af16-56649e62e57f.mp3">
 </audio>
 </body>
-
 </html> 
-[[mail_uncle]]
 
 
 :: in the bathroom {"position":"1025,1850","size":"100,100"}
@@ -146,7 +145,7 @@ prendre le couteau dans la cuisine  , sois fermer la fenetre car elle est tjr ou
 
 :: in the restroom {"position":"875,1950","size":"100,100"}
 il entre et te tue psq il est trop chaud 
-[[death]] 
+[[death]]
 
 
 :: mail_uncle [mail_uncle] {"position":"900,475","size":"100,100"}
@@ -172,7 +171,6 @@ il est ko sois il debarrasse sois il laisse la
 pendant quee tu regarde un film il voit une silouette 
 sois il baisse les store car il se dit le mec le fixe sois il change de piece car il croit etre parano
 [[You lower the shutters.]] [[you're changing rooms]]
-
 
 
 :: win {"position":"775,2225","size":"100,100"}
@@ -250,12 +248,11 @@ sois il cours par peur soit il se dit c rien
 [[You are in the house.]]
 
 
-
 :: you stay in the house {"position":"600,775","size":"100,100"}
 // regarde la tele mais il croit voir quelq'un l'observais
 fait comme si y'avais rien 
 
-[[You are in the house.]] 
+[[You are in the house.]]
 
 
 :: you take your phone {"position":"450,1925","size":"100,100"}
@@ -279,10 +276,43 @@ sois tu ferme la porte sois tu ferme la fenetre sois la porte arriere
 
 
 :: StoryStylesheet [stylesheet]
+
 /* PASSAGE PROLOGUE */
 tw-story[tags~="prologue"] {
     background-image: url("https://static.actu.fr/uploads/2022/05/p1090758-paris-xiv-rue-emile-richard-rwk.jpg");
     background-size: cover;
+}
+tw-passage[tags~="prologue"] {
+  background: rgba(255, 255, 255, 0.057);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  /*width: 450px;
+  height: 270px;*/
+  border-radius: 24px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+tw-passage[tags~="prologue"] .content {
+  /*height: 100%;*/
+  padding: 2rem;
+}
+tw-passage[tags~="prologue"] h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 70px;
+  padding-left: 20px;
+}
+
+tw-passage[tags~="prologue"] p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 15px;
+}
+
+tw-link[tags~="non"] {
+  padding-left: 30px;
 }
 
 /* PASSAGE IM_GOING */
