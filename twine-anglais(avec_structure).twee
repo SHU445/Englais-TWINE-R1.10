@@ -291,6 +291,9 @@ tw-passage[tags~="prologue"] {
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   overflow: hidden;
+  
+  display: grid;
+  place-items: center;
 }
 tw-passage[tags~="prologue"] .content {
   /*height: 100%;*/
@@ -309,10 +312,11 @@ tw-passage[tags~="prologue"] p {
   font-size: 30px;
   padding-left: 20px;
   padding-right: 15px;
+  text-align: left;
 }
 
-tw-link[tags~="non"] {
-  padding-left: 30px;
+tw-expression[tags~="link-goto"] {
+  padding-left: 60px;
 }
 
 /* PASSAGE IM_GOING */
